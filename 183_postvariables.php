@@ -9,24 +9,38 @@
 
         <?php
 
-        print_r($_POST);
+        $names=array("Fred", "Rob", "Ian");
 
-          if ($_GET["submit"]) {
 
-              if($_GET["name"]) {
 
-                  echo "Your name is ".$_GET['name'];
-              } else {
+        if (isset($_POST['submit'])){  //corrige o undefined index
+  if ($_POST["submit"]) {
 
-                echo "Please enter your name";
+                if($_POST["name"]) {
 
-              }
-          }
+                    foreach ($names as $name) {
+
+                      if ($_POST['name']==$name) echo "I know you! Your name is ".$name;
+
+                        $knowYou=1;
+
+                      }
+
+                    if (!$knowYou) echo "I don't know you, ".$name; // not working
+
+                    } else {
+
+                        echo "Please enter your name";
+
+                    }
+                  }
+}
+
 
 
          ?>
 
-    <form>
+    <form method="post">
 
         <label for="name">Name</label>
         <input name="name" type="text" />
