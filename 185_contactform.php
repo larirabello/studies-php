@@ -1,3 +1,20 @@
+<?php
+    if (isset($_POST['submit'])){
+      if ($_POST["submit"]) {
+        $result='<div class="alert alert-success">Form submitted</div>';
+
+        if (!$_POST['name']) {
+          $error="Please Enter your name";
+        }
+        if (!$_POST['email']) {
+          $error="Please Enter your email";
+        }
+        if (!$_POST['comment']) {
+          $error="Please Enter a comment";
+        }
+      }
+    }
+ ?>
 <!doctype HTML>
 <html lang="pt-BR">
 <head>
@@ -22,6 +39,10 @@
     textarea {
       height: 120px;
     }
+
+    form {
+      padding-bottom: 20px;
+    }
   </style>
 
 
@@ -29,31 +50,15 @@
 <body>
   <div>
 
-    <?php
-/*
-      $emailTo="";
-      $subject="I hope this works!";
-      $body="I think you're great!";
-      $headers="From: lari.rabello@gmail.com";
-
-      if (mail($emailTo, $subject, $body, $headers)==1) {
-
-        echo "Mail sent successfully!";
-
-      } else {
-
-        echo "Mail not sent!";
-
-      } */
-
-
-     ?>
      <div class="container">
 
        <div class="row">
 
          <div class="col-md-6 col-md-offset-3 emailForm">
            <h1>My email form</h1>
+           <?php echo $result; ?>
+
+           <p class="lead">Please get in touch - I'll get back to you soon as I can</p>
 
            <form method="post">
 
@@ -66,15 +71,11 @@
                <input type="email" name="email" class="form-control" placeholder="Your email" />
 
                <label for="comment">Your Comment: </label>
-               <textarea name="comment" class="form-control" </textarea>
-
+               <textarea name="comment" class="form-control"> </textarea>
 
             </div>
 
-             <input>Name</input>
-             <input>Subject</input>
-             <input>Content</input>
-             <button>Submit</button>
+             <button type="submit" name="submit" class="btn btn-success btn-lg" value="Submit">Submit</button>
            </form>
          </div>
 
